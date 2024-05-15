@@ -4,8 +4,16 @@ SELECT YEAR(`enrolment_date`), COUNT(`id`) AS `total_students_enroled` FROM `stu
 
 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 
+SELECT `office_address`, COUNT(*) AS `number_of_teachers`  
+FROM `teachers`
+GROUP BY `office_address`;
 
 3. Calcolare la media dei voti di ogni appello d'esame
 
+SELECT `exam_id`, AVG(`vote`)
+FROM `exam_student`
+GROUP BY `exam_id`;
 
 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+SELECT `degree_id` ,COUNT(*) AS `number_of_courses` FROM `courses` GROUP BY `degree_id`;
