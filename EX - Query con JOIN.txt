@@ -55,9 +55,11 @@ WHERE `departments`.`name` = 'Dipartimento di Matematica';
 per ogni esame, stampando anche il voto massimo. Successivamente,
 filtrare i tentativi con voto minimo 18.
 
-SELECT `students`.`name`, `students`.`surname`, `exam_student`.`student_id`, COUNT(`exam_student`.`vote`) AS `exam_attempt`,
-MAX(`exam_student`.`vote`) AS `best_vote`
+SELECT `students`.`surname`, `students`.`name`, `exam_student`.`student_id`, COUNT(`exam_student`.`vote`) AS `exam_attempt`,
+MAX(`exam_student`.`vote`) AS `best_vote`,
+MIN(`exam_student`.`vote`) AS `minimum_vote`
 FROM `exam_student`
 JOIN `students`
 ON `exam_student`.`student_id` = `students`.`id`
-GROUP BY `exam_student`.`student_id`;
+GROUP BY `exam_student`.`student_id`
+ORDER BY `students`.`surname`, `students`.`name`;
